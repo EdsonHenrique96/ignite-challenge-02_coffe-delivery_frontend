@@ -7,7 +7,7 @@ export const defaultTheme = {
   'purple-500': '#8047F8',
   'purple-200': '#EBE5F9',
 
-  'gray-900': '#403937',
+  'gray-900': '#272221',
   'gray-800': '#403937',
   'gray-700': '#574F4D',
   'gray-600': '#8D8686',
