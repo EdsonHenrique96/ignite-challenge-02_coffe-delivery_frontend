@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react'
 import { MapPin, ShoppingCart, Timer, Package, Coffee } from 'phosphor-react'
 import LogoImg from '../../assets/logo.png'
 import IlustrateImg from '../../assets/ilustrate-image.png'
@@ -14,9 +15,17 @@ import {
   IntroSectionItems,
   LocationButton,
 } from './styles'
-import { CatalogItem } from './components/CatalogItem'
+import { CatalogItem, Coffe } from './components/CatalogItem'
+
+import ProductDataJSON from '../../../public/products-data.json'
 
 export function Home() {
+  const [products, setProducts] = useState<Coffe[]>([])
+
+  useEffect(() => {
+    setProducts(ProductDataJSON as Coffe[])
+  }, [])
+
   return (
     <Container>
       <header>
@@ -85,16 +94,10 @@ export function Home() {
         <CatalogSection>
           <h2>Nossos cafés</h2>
           <CatalogItems>
-            <CatalogItem />
-            <CatalogItem />
-            <CatalogItem />
-            <CatalogItem />
-            <CatalogItem />
-            <CatalogItem />
-            <CatalogItem />
-            <CatalogItem />
-            <CatalogItem />
-            <CatalogItem />
+            {products.length > 0 &&
+              products.map((product) => (
+                <CatalogItem productData={product} key={product.id} />
+              ))}
           </CatalogItems>
         </CatalogSection>
       </HomeConteiner>

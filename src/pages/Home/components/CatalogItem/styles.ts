@@ -20,15 +20,23 @@ export const CatalogItemHeader = styled.header`
     width: 120px;
     height: 120px;
   }
+`
 
-  span {
-    color: ${(props) => props.theme['yellow-800']};
-    background-color: ${(props) => props.theme['yellow-200']};
-    font-weight: bold;
-    font-size: 0.625rem;
-    padding: 0.25rem 0.5rem;
-    border-radius: 100px;
-  }
+export const ProductLabelBox = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  gap: 0.25rem;
+`
+
+export const ProductLabel = styled.span`
+  color: ${(props) => props.theme['yellow-800']};
+  background-color: ${(props) => props.theme['yellow-200']};
+  font-weight: bold;
+  font-size: 0.625rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 100px;
 `
 
 export const CatalogItemDescription = styled.section`

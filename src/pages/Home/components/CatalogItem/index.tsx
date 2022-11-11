@@ -5,28 +5,44 @@ import {
   CatalogItemFooter,
   CatalogItemHeader,
   PriceLabel,
+  ProductLabel,
+  ProductLabelBox,
   QuantityManagerButton,
 } from './styles'
-import ProductImg from '../../../../assets/expresso.png'
 
-export function CatalogItem() {
+export interface Coffe {
+  id: string
+  imagePath: string
+  labels: string[]
+  title: string
+  description: string
+  price: string
+}
+
+interface CatalogItemProps {
+  productData: Coffe
+}
+
+export function CatalogItem({ productData }: CatalogItemProps) {
   return (
     <CatalogItemContainer>
       <CatalogItemHeader>
-        <img src={ProductImg} alt="foto do produto" />
-        <span>TRADICIONAL</span>
+        <img src={productData.imagePath} alt="foto do produto" />
+        <ProductLabelBox>
+          {productData.labels.map((label) => (
+            <ProductLabel key={label}>{label}</ProductLabel>
+          ))}
+        </ProductLabelBox>
       </CatalogItemHeader>
 
       <CatalogItemDescription>
-        <h1>Expresso Tradicional</h1>
-        <p>O tradicional café feito com água quente e grãos moídos</p>
+        <h1>{productData.title}</h1>
+        <p>{productData.description}</p>
       </CatalogItemDescription>
 
       <CatalogItemFooter>
         <PriceLabel>
-          <p>
-            R$ <span>9,90</span>
-          </p>
+          R$ <span>{productData.price}</span>
         </PriceLabel>
 
         <QuantityManagerButton>
